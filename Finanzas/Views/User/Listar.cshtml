@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewData["Title"] = "Listar";
+    List<User> usuario = ((List<User>)Model);
+}
+
+<h1>Listar</h1>
+
+@if (TempData["SOLICITUD"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SOLICITUD"]
+    </div>
+}
+
+@if (TempData["SOLICITUDOK"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["SOLICITUDOK"]
+    </div>
+}
+
+<h1>Lista de Usuarios</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Solicitud</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in usuario)
+        {
+            if (item.Username != @User.Claims.FirstOrDefault().Value)
+            {
+                <tr>
+                    <td>@item.Username</td>
+                    <td>
+                        <a href="/User/solicitud?idUser=@item.Id">Enviar solicitud</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewData["Title"] = "ListarSolicitud";
+    List<Solicitud> solicitud = ((List<Solicitud>)Model);
+}
+
+<h1>Listar Solicitud</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Solicitud</th>
+            <th>Aceptar</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in solicitud)
+        {
+            <tr>
+                <td>@item.Mensaje</td>
+                <td>
+                    <a href="/User/AceptarSolicitud?idSolicitud=@item.Id">Aceptar solicitud</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

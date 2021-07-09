@@ -1,0 +1,49 @@
+﻿@{
+    List<Cuenta> cuentitas = ((List<Cuenta>)Model);
+}
+
+<h1>Lista de cuentas</h1>
+<a href="/Cuenta/Registrar" class="float-right btn btn-primary">Crear Cuenta</a>
+<br />
+<a href="/Cuenta/Transferir" class="btn btn-primary">Transferencia</a>
+<br />
+<a href="/Cuenta/Yapear" class="btn btn-primary float-xl-right">Yapear</a>
+<br />
+<h5>Monto total: @ViewBag.Total S./</h5>
+
+<div class="row">
+    <div class="col">
+        <table class="table">
+            <thead class="text-center">
+                <tr>
+                    <th>Categoria</th>
+                    <th>Nombre</th>
+                    <th>Saldo</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody class="text-center">
+                @foreach (var item in cuentitas)
+                {
+                    <tr>
+                        <td>@item.Categoria.Nombre</td>
+                        <td>@item.Nombre</td>
+                        <td class="text-center">
+                            @if (item.IdCategoria == 2)
+                            {
+                                <strong>Limite</strong> @string.Format("{0:N2}", item.Limite)
+                                <br />
+                            }
+                                <strong>Saldo</strong> @string.Format("{0:N2}", item.Saldo) S/.
+                                  <br />
+                        </td>
+                        <td>
+                            <a href="/transaccion/index?id=@item.Id">Transaccion</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+ 

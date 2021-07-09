@@ -1,0 +1,24 @@
+﻿
+
+
+        @{ViewData["Title"] = "Registrar";}
+
+
+        <form action="/User/Registrar" class="col-12" method="post">
+            <label>Username</label>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Nombre de Usuario" name="Username" />
+                @Html.ValidationMessage("Username")
+            </div>
+            <label>Contraseña</label>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="Contraseña" name="Password" />
+                @Html.ValidationMessage("password")
+            </div>
+            <label>Confirmar Contraseña</label>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="Confirmar Contraseña" name="passwordConf" />
+                @Html.ValidationMessage("PasswordConf")
+            </div>
+            <button type="submit" class="btn btn-primary"> Registrar </button>
+        </form>
